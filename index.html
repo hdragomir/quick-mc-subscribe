@@ -1,4 +1,17 @@
-<form action="mc.php" method=post>
+<form action="mc.php" method=post id=mc-subscribe>
 	<label>Email: <input type=email name=email /></label>
 	<input type=submit value="Newsletter!" />
 </form>
+<script src=//ajax.googleapis.com/ajax/libs/jquery/1/jquery.js></script>
+<script>
+
+$(function(){
+	$('#mc-subscribe').submit(function(){
+		$.post('mc.php', $(this).serialize(), function(json){
+			alert(json.message);
+		}, 'json');
+		return false;
+	})
+})
+
+</script>
